@@ -34,18 +34,34 @@ export default function Home() {
       time: 63,
       problem: "Two Sum",
       date: 1651600541000,
+    },{
+      rank: 2,
+      name: "Kleo",
+      time: 63,
+      problem: "Two Sum",
+      date: 1651600541000,
+    },{
+      rank: 3,
+      name: "Kleo",
+      time: 63,
+      problem: "Two Sum",
+      date: 1651600541000,
+    },{
+      rank: 4,
+      name: "Kleo",
+      time: 63,
+      problem: "Two Sum",
+      date: 1651600541000,
     },
   ];
 
   return (
     <>
-      <div className="w-full h-14 bg-neutral-900"></div>
-
       <div className="mt-5 mx-10 xl:mx-[35rem] flex gap-5">
         <div className="w-full">
           <SpeedrunTable data={users} />
         </div>
-        <div className="w-[35rem]">
+        <div className="w-[35rem] h-max">
           <div className="w-full bg-[#121212] h-full rounded-lg p-5">
             <h1 className="font-bold">LATEST NEWS</h1>
             <div className="flex flex-col w-full pt-3">
@@ -75,6 +91,8 @@ export default function Home() {
               />
             </div>
           </div>
+
+          
         </div>
       </div>
     </>

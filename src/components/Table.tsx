@@ -1,5 +1,6 @@
 import { format, timeAgo } from "@/lib/utils";
 import { formatDate } from "date-fns";
+import { TrophyIcon } from "lucide-react";
 import React from "react";
 
 export interface Speedrun {
@@ -38,25 +39,29 @@ const SpeedrunTable: React.FC<TableProps> = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((user) => (
+          {data.map((speedrun, i) => (
             <tr
-              key={user.rank}
+              key={i}
               className="hover:bg-[#1f1f1f] transition-colors border-b border-[#1e1e1e]"
             >
-              <td className="px-6 py-4 whitespace-nowrap">{user.rank}</td>
+              <td className="px-6 py-4 whitespace-nowrap flex justify-center">
+                <Rank rank={speedrun.rank} />
+              </td>
               <td className="px-6 py-4 whitespace-nowrap font-bold">
-                {user.name}
+                {speedrun.name}
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                {format(user.time)}
+                {format(speedrun.time)}
               </td>
               <td
                 className="px-6 py-4 whitespace-nowrap"
-                title={new Date(user.date).toLocaleString()}
+                title={new Date(speedrun.date).toLocaleString()}
               >
-                {timeAgo(user.date)}
+                {timeAgo(speedrun.date)}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">{user.problem}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {speedrun.problem}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -64,5 +69,13 @@ const SpeedrunTable: React.FC<TableProps> = ({ data }) => {
     </div>
   );
 };
+
+function Rank({ rank }: { rank: number }) {
+  if (rank === 1) return <TrophyIcon className="w-4 text-amber-400" />;
+  if (rank === 2) return <TrophyIcon className="w-4 text-slate-400" />;
+  if (rank === 3) return <TrophyIcon className="w-4 text-amber-600" />;
+
+  return rank;
+}
 
 export default SpeedrunTable;
